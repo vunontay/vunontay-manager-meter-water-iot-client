@@ -122,7 +122,24 @@ const Header = () => {
                         </div>
 
                         <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-                            <ModeToggle />
+                            <div className="flex w-full justify-between">
+                                {userId ? (
+                                    <UserNav />
+                                ) : (
+                                    <Button
+                                        variant={"outline"}
+                                        size={"sm"}
+                                        asChild
+                                    >
+                                        <Link to={"/auth/login"}>
+                                            {" "}
+                                            Đăng nhập
+                                        </Link>
+                                    </Button>
+                                )}
+
+                                <ModeToggle />
+                            </div>
                         </SheetFooter>
                     </SheetContent>
                 </Sheet>

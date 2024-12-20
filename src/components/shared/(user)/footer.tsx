@@ -10,7 +10,6 @@ const Footer = () => {
                             <Link to="/">
                                 <img
                                     alt="logo"
-                                    text-sm
                                     src="/logo.webp"
                                     className={
                                         "transition-all duration-300 ease-in-out size-32"
@@ -146,7 +145,6 @@ const Footer = () => {
                             <Link
                                 target="_blank"
                                 to="https://www.facebook.com/Vu.0207"
-                                text-sm
                                 className="text-primary transition-all border-primary hover:border-b-2 ml-1"
                             >
                                 @vunontay
