@@ -40,8 +40,16 @@ const routeList: RouteProps[] = [
     },
 
     {
-        href: "user/contacts",
+        href: "/",
         label: "Liên hệ",
+    },
+    {
+        href: "/",
+        label: "Giới thiệu",
+    },
+    {
+        href: "/",
+        label: "Sản phẩm",
     },
 ];
 

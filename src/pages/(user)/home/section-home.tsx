@@ -13,12 +13,12 @@ const HomeSection = () => {
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
                 <div className="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center gap-2 md:gap-4">
-                    <h1 className="text-white text-xl md:text-4xl font-bold ca">
-                        Phần mềm - Đồng hồ Ghi chỉ số Nước{" "}
+                    <h1 className="text-white text-xl md:text-4xl font-bold uppercase">
+                        Đồng hồ nước thông minh - Đơn giản hóa quản lý, Nâng tầm
+                        trải nghiệm
                     </h1>
-                    <h2 className="text-white text-sm md:text-xl">
-                        Giải pháp tích hợp Ghi chỉ số, Nhắc nợ, Thu cước trên
-                        thiết bị di động ngoài hiện trường{" "}
+                    <h2 className="text-white text-sm md:text-xl capitalize">
+                        Tiết kiệm nước - Quản lý thông minh - Kết nối tương lai
                     </h2>
 
                     <Button className="max-w-[500px] mt-2">
