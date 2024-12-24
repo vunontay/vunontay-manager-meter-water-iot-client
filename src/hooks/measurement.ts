@@ -48,12 +48,66 @@ const useMeasurement = () => {
             staleTime: 5 * 60 * 1000,
         });
 
+    const getOneMeasurementMutation = useMutation<
+        TResponse<null>,
+        Error,
+        string
+    >({
+        mutationFn: (code_meter: string) =>
+            measurementService.getOneMeasurement(code_meter),
+        onSuccess: async (data) => {
+            toast.success(data.message);
+
+            // Đợi 5 giây để MQTT lưu dữ liệu vào DB
+            setTimeout(async () => {
+                await queryClient.invalidateQueries({
+                    queryKey: ["measurements"],
+                });
+                await queryClient.invalidateQueries({
+                    queryKey: ["measurement"],
+                });
+                await queryClient.invalidateQueries({
+                    queryKey: ["invoices"],
+                });
+                await getMeasurementsQuery.refetch();
+            }, 5000);
+        },
+        onError: (error) => toast.error(error.message),
+    });
+
     const updateMeasurementMutation = useMutation<TResponse<null>, Error>({
         mutationFn: () => measurementService.sendRequest(),
         onSuccess: async (data) => {
             toast.success(data.message);
 
-            // Invalidate the queries
+            // Đợi 5 giây để MQTT lưu dữ liệu vào DB
+            setTimeout(async () => {
+                await queryClient.invalidateQueries({
+                    queryKey: ["measurements"],
+                });
+                await queryClient.invalidateQueries({
+                    queryKey: ["measurement"],
+                });
+                await queryClient.invalidateQueries({
+                    queryKey: ["invoices"],
+                });
+                await getMeasurementsQuery.refetch();
+            }, 5000);
+        },
+        onError: (error) => toast.error(error.message),
+    });
+
+    const resetMeasurementMutation = useMutation<
+        TResponse<null>,
+        Error,
+        string
+    >({
+        mutationFn: (code_meter: string) =>
+            measurementService.resetMeasurement(code_meter),
+        onSuccess: async (data) => {
+            toast.success(data.message);
+
+            // Invalidate queries
             setTimeout(() => {
                 queryClient.invalidateQueries({
                     queryKey: ["measurements"],
@@ -61,12 +115,8 @@ const useMeasurement = () => {
                 queryClient.invalidateQueries({
                     queryKey: ["measurement"],
                 });
-                queryClient.invalidateQueries({
-                    queryKey: ["invoices"],
-                });
-            }, 1000);
+            }, 3000);
 
-            // After invalidation, refetch the data
             await getMeasurementsQuery.refetch();
         },
         onError: (error) => toast.error(error.message),
@@ -77,6 +127,8 @@ const useMeasurement = () => {
         getMeasurementQuery,
         updateMeasurementMutation,
         getMeasurementUserQuery,
+        getOneMeasurementMutation,
+        resetMeasurementMutation,
     };
 };
 

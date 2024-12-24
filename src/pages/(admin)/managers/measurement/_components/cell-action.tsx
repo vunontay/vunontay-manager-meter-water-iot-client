@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
-import { TMeasurement } from "@/types/type-measurement";
-import { DropdownMenuActions } from "@/pages/(admin)/managers/measurement/_components/dropdown-action";
-import MeasurementDialog from "@/pages/(admin)/managers/measurement/_components/measurement-dialog";
 import { useDispatch } from "react-redux";
+import { TMeasurement } from "@/types/type-measurement";
+import { DropdownMenuActions } from "./dropdown-action";
+import MeasurementDialog from "./measurement-dialog";
 import { closeCollapse } from "@/stores/slices/sidebar";
+import useMeasurement from "@/hooks/measurement";
 
 interface ICellAction {
     data: TMeasurement;
@@ -12,6 +12,8 @@ interface ICellAction {
 
 export function CellAction({ data }: ICellAction) {
     const dispatch = useDispatch();
+    const { resetMeasurementMutation } = useMeasurement();
+
     const [measurementDialogState, setMeasurementDialogState] = useState({
         open: false,
         type: "" as "view" | "delete" | "",
@@ -20,8 +22,13 @@ export function CellAction({ data }: ICellAction) {
     const openMeasurementDialog = (type: "view" | "delete") => {
         setMeasurementDialogState({ open: true, type });
     };
+
     const closeMeasurementDialog = () => {
         setMeasurementDialogState({ open: false, type: "" });
+    };
+
+    const handleReset = () => {
+        resetMeasurementMutation.mutate(data.code_meter);
     };
 
     useEffect(() => {
@@ -35,6 +42,7 @@ export function CellAction({ data }: ICellAction) {
             <DropdownMenuActions
                 onViewDetail={() => openMeasurementDialog("view")}
                 onDelete={() => openMeasurementDialog("delete")}
+                onReset={handleReset}
             />
             <MeasurementDialog
                 isOpen={measurementDialogState.open}

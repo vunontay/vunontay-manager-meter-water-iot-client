@@ -115,9 +115,9 @@ const Header = () => {
                             </SheetHeader>
 
                             <div className="flex flex-col gap-2">
-                                {routeList.map(({ href, label }) => (
+                                {routeList.map(({ href, label }, index) => (
                                     <Button
-                                        key={href}
+                                        key={index}
                                         onClick={() => setIsOpen(false)}
                                         asChild
                                         variant="ghost"
@@ -157,8 +157,8 @@ const Header = () => {
             <NavigationMenu className="hidden lg:block mx-auto">
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        {routeList.map(({ href, label }) => (
-                            <NavigationMenuLink key={href} asChild>
+                        {routeList.map(({ href, label }, index) => (
+                            <NavigationMenuLink key={index} asChild>
                                 <Link
                                     to={href}
                                     className="text-sm font-medium px-2"

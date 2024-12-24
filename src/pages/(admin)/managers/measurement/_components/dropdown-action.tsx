@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { EllipsisVertical, ListCollapse, Trash2 } from "lucide-react";
+import {
+    EllipsisVertical,
+    ListCollapse,
+    RotateCcw,
+    Trash2,
+} from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -13,11 +18,13 @@ import {
 interface DropdownMenuActionsProps {
     onViewDetail: () => void;
     onDelete: () => void;
+    onReset: () => void;
 }
 
 export function DropdownMenuActions({
     onViewDetail,
     onDelete,
+    onReset,
 }: DropdownMenuActionsProps) {
     return (
         <DropdownMenu>
@@ -36,12 +43,21 @@ export function DropdownMenuActions({
                 <DropdownMenuGroup>
                     <DropdownMenuItem onClick={onViewDetail}>
                         <span>Xem chi tiết</span>
-
-                        <ListCollapse />
+                        <ListCollapse className="ml-2 h-4 w-4" />
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={onDelete}>
+                    <DropdownMenuItem
+                        onClick={onReset}
+                        className="text-yellow-600"
+                    >
+                        <span>Reset</span>
+                        <RotateCcw className="ml-2 h-4 w-4" />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        onClick={onDelete}
+                        className="text-red-600"
+                    >
                         <span>Xóa</span>
-                        <Trash2 />
+                        <Trash2 className="ml-2 h-4 w-4" />
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

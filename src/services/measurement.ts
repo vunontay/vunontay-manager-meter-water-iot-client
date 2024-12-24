@@ -36,6 +36,22 @@ class MeasurementService {
             );
         return response.data;
     }
+
+    async getOneMeasurement(code_meter: string): Promise<TResponse<null>> {
+        const response: AxiosResponse<TResponse<null>> =
+            await axiosInstance.post(
+                `${API_URL.MEASUREMENT.INDEX}/get/${code_meter}`
+            );
+        return response.data;
+    }
+
+    async resetMeasurement(code_meter: string): Promise<TResponse<null>> {
+        const response: AxiosResponse<TResponse<null>> =
+            await axiosInstance.post(
+                `${API_URL.MEASUREMENT.INDEX}/reset/${code_meter}`
+            );
+        return response.data;
+    }
 }
 
 const measurementService = new MeasurementService();
