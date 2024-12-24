@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/auth";
 import { registerSchema } from "@/validations/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Home } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -119,15 +120,23 @@ const RegisterPage = () => {
                                         ? "Đang gửi..."
                                         : "Đăng ký"}
                                 </LoadingButton>
-                                <p className="mt-4 text-sm text-center text-gray-700">
-                                    Đã có tài khoản?{" "}
+                                <div className="flex items-center justify-between mt-4 w-full">
+                                    <p className="text-sm text-center text-gray-700">
+                                        Đã có tài khoản?{" "}
+                                        <Link
+                                            to="/auth/login"
+                                            className="text-primary hover:underline"
+                                        >
+                                            Đăng nhập
+                                        </Link>
+                                    </p>
                                     <Link
-                                        to="/auth/login"
-                                        className="text-primary hover:underline"
+                                        to="/"
+                                        className="text-sm text-center text-primary hover:underline flex items-center gap-2"
                                     >
-                                        Đăng nhập
+                                        Trang chủ <Home className="size-4" />
                                     </Link>
-                                </p>
+                                </div>
                             </CardFooter>
                         </form>
                     </Form>

@@ -27,8 +27,8 @@ const MeterTable = ({ data }: IMeterTable) => {
                 {data.map((meter) => (
                     <TableRow key={meter._id}>
                         <TableCell>{meter.code_meter}</TableCell>
-                        <TableCell>{meter.flow.toFixed(2)}</TableCell>
-                        <TableCell>{meter.volume.toFixed(2)}</TableCell>
+                        <TableCell>{meter.flow}</TableCell>
+                        <TableCell>{meter.volume}</TableCell>
                         <TableCell>{meter.measurementsCount}</TableCell>
                     </TableRow>
                 ))}
