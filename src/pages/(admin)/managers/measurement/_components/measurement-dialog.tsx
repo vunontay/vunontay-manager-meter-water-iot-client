@@ -43,7 +43,6 @@ const MeasurementDialog = ({
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Phiên dữ liệu</TableHead>
-
                                 <TableHead>Thời gian</TableHead>
                                 <TableHead>Lưu lượng (m³/h)</TableHead>
                                 <TableHead>Thể tích (m³)</TableHead>
@@ -52,16 +51,12 @@ const MeasurementDialog = ({
                         <TableBody>
                             {measurements?.map((item, index) => (
                                 <TableRow key={item._id}>
-                                    <TableCell>{index + 1}</TableCell>
+                                    <TableCell>{index}</TableCell>
                                     <TableCell className="font-medium">
                                         {formatDate(item.timestamp)}
                                     </TableCell>
-                                    <TableCell>
-                                        {item.flow.toFixed(2)}
-                                    </TableCell>
-                                    <TableCell>
-                                        {item.volume.toFixed(2)}
-                                    </TableCell>
+                                    <TableCell>{item.flow}</TableCell>
+                                    <TableCell>{item.volume}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
