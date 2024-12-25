@@ -12,9 +12,13 @@ export type TMeasurementUser = {
     meters: {
         code_meter: string;
         measurements: TMeasurement[];
-        totalFlow: number;
-        totalVolume: number;
+        price_per_unit: number;
+        total_amount: number;
+        timestamp: string;
+        flow: number;
+        volume: number;
     }[];
     totalFlow: number;
     totalVolume: number;
+    totalAmount: number;
 };

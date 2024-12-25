@@ -44,24 +44,24 @@ export const columns: ColumnDef<TMeasurement>[] = [
         ),
         enableSorting: true,
     },
-    {
-        accessorKey: "measurementsCount",
-        header: ({ column }) => (
-            <Button
-                variant="ghost"
-                onClick={() =>
-                    column.toggleSorting(column.getIsSorted() === "asc")
-                }
-            >
-                Số Bản Ghi
-                <ArrowUpDown className="ml-2 h-4 w-4" />
-            </Button>
-        ),
-        cell: ({ row }) => (
-            <span className="text-sm">{row.original.measurementsCount}</span>
-        ),
-        enableSorting: true,
-    },
+    // {
+    //     accessorKey: "measurementsCount",
+    //     header: ({ column }) => (
+    //         <Button
+    //             variant="ghost"
+    //             onClick={() =>
+    //                 column.toggleSorting(column.getIsSorted() === "asc")
+    //             }
+    //         >
+    //             Số Bản Ghi
+    //             <ArrowUpDown className="ml-2 h-4 w-4" />
+    //         </Button>
+    //     ),
+    //     cell: ({ row }) => (
+    //         <span className="text-sm">{row.original.measurementsCount}</span>
+    //     ),
+    //     enableSorting: true,
+    // },
 
     {
         id: "actions",
